@@ -413,12 +413,10 @@ $if(beamer)$
    \tagstructbegin{tag=H}\tagmcbegin{tag=H}}
 \AtBeginEnvironment{frame}{\tagmcend\tagstructend}
 \AfterEndEnvironment{frame}{\tagstructend}
+$else$
+\pretocmd{\maketitle}{\tagstructbegin{tag=H1}\tagmcbegin{tag=H1}}{}{}
+\apptocmd{\maketitle}{\tagmcend\tagstructend}{}{}
 $endif$
-\BeforeBeginEnvironment{itemize}{\tagstructbegin{tag=L}}
-\AfterEndEnvironment{itemize}{\tagstructend}
-\pretocmd{\item}{\tagstructbegin{tag=LI}\tagstructbegin{tag=Lbl}%
-   \tagmcbegin{tag=Lbl}}{}{}
-\apptocmd{\item}{\tagmcend\tagstructend}{}{}
 
 \usepackage{tagpdf}
 \tagpdfsetup{
@@ -485,7 +483,9 @@ $endif$
 $if(has-frontmatter)$
 \mainmatter
 $endif$
+{
 $body$
+}
 
 $if(has-frontmatter)$
 \backmatter

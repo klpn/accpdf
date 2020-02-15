@@ -10,11 +10,18 @@ function Para(el)
 end
 
 function BulletList(el)
-  return pandoc.walk_block(el, {
+  return {pandoc.RawBlock("latex", "\\tagstructbegin{tag=L}"), pandoc.walk_block(el, {
     Plain = function(el)
       return { pandoc.RawBlock("latex",
-        "\\tagstructbegin{tag=LBody}\\tagmcbegin{tag=P}"),
+        "\\tagstructbegin{tag=LI}\\tagstructbegin{tag=LBody}\\tagmcbegin{tag=P}"),
         el,
-        pandoc.RawBlock("latex", "\\tagmcend\\tagstructend\\tagstructend") }
-    end })
+        pandoc.RawBlock("latex", "\\tagmcend\\tagstructend\\tagstructend")}
+    end }),
+   pandoc.RawBlock("latex", "\\tagstructend")}
+end
+
+if FORMAT:match "latex" then
+  function Header(el)
+    return tagBlock ("H" .. el.level, el)
+  end
 end
