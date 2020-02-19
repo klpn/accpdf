@@ -59,7 +59,7 @@ end
 
 if FORMAT:match "latex" then
   function Header(el)
-    return tagBlock ("H" .. el.level, el)
+    return tagBlock("H" .. el.level, el)
   end
 end
 

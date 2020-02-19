@@ -126,7 +126,7 @@ grid(1)
 ```
 
 ![Lifetime probabilty of cancer incidence and mortality for Swedish females and
-males 2014](Se14CancLt.svg){width=100% height=100% alt="Lifetime probability of cancer in Sweden 2014"}
+males 2014](Se14CancLt.png){width=100% height=100% alt="Lifetime probability of cancer in Sweden 2014"}
 
 As the chart shows, the probabilities tend to decrease with age, especially
 after age 60, which is due to increasing competition from other causes of

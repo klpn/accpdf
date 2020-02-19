@@ -7,3 +7,7 @@ pdf:
 
 tex:
 	pandoc -o $(FILE).tex $(FILE).md --lua-filter=$(TEMPLDIR)/tagged-filter.lua --template=$(TEMPLDIR)/tagged-template.latex
+
+pdfnb: tex
+	sed -i '/^$$/d' $(FILE).tex
+	$(ENGINE) $(FILE).tex
