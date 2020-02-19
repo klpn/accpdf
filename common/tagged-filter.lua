@@ -32,10 +32,30 @@ function BulletList(el)
         el,
         pandoc.RawBlock("latex", "\\tagmcend\\tagstructend\\tagstructend")}
     end }),
-   pandoc.RawBlock("latex", "\\tagstructend")}
+    pandoc.RawBlock("latex", "\\tagstructend")}
 end
 
 OrderedList = BulletList
+
+function DefinitionList(el)
+  return {pandoc.RawBlock("latex", "\\tagstructbegin{tag=L}"),
+    transformDefs(el),
+    pandoc.RawBlock("latex", "\\tagstructend")}
+end
+
+function transformDefs(el)
+  for i, def in ipairs(el.content) do
+    table.insert(el.content[i][1], 1,
+      pandoc.RawInline("latex", "\\tagstructbegin{tag=LI}\\tagstructbegin{tag=Lbl}\\tagmcbegin{tag=Lbl}"))
+    table.insert(el.content[i][1],
+      pandoc.RawInline("latex", "\\tagmcend\\tagstructend"))
+    table.insert(el.content[i][2][1], 1,
+      pandoc.RawBlock("latex", "\\tagstructbegin{tag=LBody}\\tagmcbegin{tag=P}"))
+    table.insert(el.content[i][2][1],
+      pandoc.RawBlock("latex", "\\tagmcend\\tagstructend\\tagstructend"))
+  end
+  return el
+end
 
 if FORMAT:match "latex" then
   function Header(el)
