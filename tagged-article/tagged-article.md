@@ -10,10 +10,10 @@ lang: en
 It is common to hear statements such as 
 
 One in three
-:    one in three persons will develop cancer during their lifetime
+:    One in three persons will develop cancer during their lifetime.
 
 One in nine
-:    one in nine women will develop breast cancer
+:    One in nine women will develop breast cancer.
 
 Most often, such statements are based on a simple calculation of
 cumulative risk, i.e.\ age-specific incidence rates for a given year and cancer

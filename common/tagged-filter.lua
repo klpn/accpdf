@@ -1,8 +1,9 @@
-function tagBlock(label, el)
+function tagBlock(label, el, extratex)
+  extratex = extratex or ""
   return { pandoc.RawBlock("latex",
       "\\tagstructbegin{tag=" .. label .."}\\tagmcbegin{tag=" .. label .. "}"),
     el,
-    pandoc.RawBlock("latex", "\\leavevmode\\tagmcend\\tagstructend") }
+    pandoc.RawBlock("latex", "\\leavevmode\\tagmcend\\tagstructend" .. extratex) }
 end
 
 function tagFigureBlock(alttext, el)
@@ -16,7 +17,7 @@ function Para(el)
   if el.c[1].t == "Image" then
     return tagFigureBlock(el.c[1].attributes.alt, el)
   else
-    return tagBlock("P", el)
+    return tagBlock("P", el, "\\par")
   end
 end
 

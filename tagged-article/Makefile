@@ -10,4 +10,5 @@ tex:
 
 pdfnb: tex
 	sed -i '/^$$/d' $(FILE).tex
+	rm -f $(FILE).xmpdata
 	$(ENGINE) $(FILE).tex
