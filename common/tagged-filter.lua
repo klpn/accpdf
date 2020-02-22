@@ -89,6 +89,8 @@ function Table(el)
 end
 
 function transformTable(el)
+  table.insert(el.caption, 1, pandoc.RawInline("latex", "\\tagmcbegin{tag=Caption}"))
+  table.insert(el.caption, pandoc.RawInline("latex", "\\tagmcend"))
   transformRow(el.headers, "TH")
   for _, r in pairs(el.rows) do
    transformRow(r, "TD")
