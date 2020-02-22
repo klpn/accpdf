@@ -176,3 +176,5 @@ it, because more people will survive to higher ages where the probability
 of getting cancer before succumbing to something else is lower (with greater
 reductions, the risks at lower ages asymptotically approach the corresponding
 risks at the highest age, i.e.\ 85 years in this example).
+
+# References

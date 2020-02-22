@@ -33,6 +33,10 @@ function Math(el)
   return tagInline("Formula", el)
 end
 
+function Cite(el)
+  return tagInline("Reference", el)
+end
+
 function Para(el)
   if el.c[1].t == "Image" then
     return tagFigureBlock(el.c[1].attributes.alt, el)
@@ -110,9 +114,16 @@ function transformRow(el, rowtype)
   return el
 end
 
+function Div(el)
+  if el.identifier:match "ref-" then
+    return tagBlock("BibEntry", el)
+  else
+    return tagBlock("Div", el)
+  end
+end
+
 if FORMAT:match "latex" then
   function Header(el)
     return tagBlock("H" .. el.level, el)
   end
 end
-
