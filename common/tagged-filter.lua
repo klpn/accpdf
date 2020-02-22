@@ -13,6 +13,26 @@ function tagFigureBlock(alttext, el)
     pandoc.RawBlock("latex", "\\tagmcend\\tagstructend") }
 end
 
+function tagInline(label, el, extratex)
+  extratex = extratex or ""
+  return { pandoc.RawInline("latex",
+      "{\\tagstructbegin{tag=" .. label .."}\\tagmcbegin{tag=" .. label .. "}"),
+    el,
+    pandoc.RawInline("latex", "\\leavevmode\\tagmcend\\tagstructend" .. extratex .. "}") }
+end
+
+function Note(el)
+  return tagInline("Note", el)
+end
+
+function Link(el)
+  return tagInline("Link", el)
+end
+
+function Math(el)
+  return tagInline("Formula", el)
+end
+
 function Para(el)
   if el.c[1].t == "Image" then
     return tagFigureBlock(el.c[1].attributes.alt, el)

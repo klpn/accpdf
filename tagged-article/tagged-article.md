@@ -54,16 +54,16 @@ statistics. Only the following data are required:
    this should include complications of cancer and cancer treatment (otherwise,
    the independence assumption given above would be violated).
 
-Using my [LifeTable package](https://github.com/klpn/LifeTable.jl), the AMP method
+Using my LifeTable package, <https://github.com/klpn/LifeTable.jl>, the AMP method
 can be easily implemented in Julia. I will give examples with calculations for
 Sweden 2014, using data from @scbmeanpopen for population size, @soscanen
 for cancer cases and @sosdoren for deaths. The data are given in 5-year age
 intervals from 0--4 to 80--84 years, with an open interval for ages above 85
 years.
 The files used in the example are available via a
-[gist](https://gist.github.com/klpn/3ab1feff67d6e938fecc61c8307ce394). The
-[Julia
-file](https://gist.github.com/klpn/3ab1feff67d6e938fecc61c8307ce394#file-amplt-jl) 
+gist, <https://gist.github.com/klpn/3ab1feff67d6e938fecc61c8307ce394>. The
+Julia
+file, <https://gist.github.com/klpn/3ab1feff67d6e938fecc61c8307ce394#file-amplt-jl> 
 contains the following code:
 
 ``` {.julia .numberLines}
