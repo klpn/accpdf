@@ -132,6 +132,14 @@ As the chart shows, the probabilities tend to decrease with age, especially
 after age 60, which is due to increasing competition from other causes of
 death, e.g.\ circulatory disorders.
 
+| Measure    | Female | Male |
+| ---------  | ------ | ---- |
+| Incidence  | 45.7   | 49.3 |
+| Mortality  | 22.3   | 26.2 |
+
+: Lifetime probabilty of cancer incidence and mortality for Swedish females and
+males 2014.
+
 If cancer incidence and mortality are changed, this might also influence
 mortality from some non-cancer causes. For example, decreased smoking tends to
 decrease lung cancer incidence and mortality, as well as mortality from

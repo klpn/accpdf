@@ -8,7 +8,9 @@ Experiments with creating accessible PDFs from Pandoc, see
   templates and Lua filters in the `common` directory. The `pdfnb`
   target removes empty lines created by `RawBlock` in Pandoc from
   the generated `.tex` file (which can create superfluous vertical
-  space in the PDF) and runs the result through Lualatex.
+  space in the PDF) and runs the result through Lualatex. This target
+  also uses a workaround to avoid duplicating tagging commands with
+  the `longtable` package, which Pandoc uses for tables.
 * The tag structure in the resulting PDF can be inspected using
   the [Poppler](https://poppler.freedesktop.org/) pdfinfo utility,
   e.g. `pdfinfo -struct-text tagged-pres.pdf`.

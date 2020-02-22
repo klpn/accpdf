@@ -8,7 +8,10 @@ pdf:
 tex:
 	pandoc -o $(FILE).tex $(FILE).md --lua-filter=$(TEMPLDIR)/tagged-filter.lua --template=$(TEMPLDIR)/tagged-template.latex
 
+clean:
+	rm -f $(FILE).aux $(FILE).log $(FILE).xmpdata pdfa.xmpi
+
 pdfnb: tex
-	sed -i '/^$$/d' $(FILE).tex
+	sed -i '/^$$/d;/\\endfirsthead/,/\\endhead/c\\\endfirsthead' $(FILE).tex
 	rm -f $(FILE).xmpdata
 	$(ENGINE) $(FILE).tex

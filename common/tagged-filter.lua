@@ -58,6 +58,38 @@ function transformDefs(el)
   return el
 end
 
+function Table(el)
+  return {pandoc.RawBlock("latex", "\\tagstructbegin{tag=Table}"),
+    transformTable(el),
+    pandoc.RawBlock("latex", "\\tagstructend")}
+end
+
+function transformTable(el)
+  transformRow(el.headers, "TH")
+  for _, r in pairs(el.rows) do
+   transformRow(r, "TD")
+  end
+  return el
+end
+
+function transformRow(el, rowtype)
+  for i, t in ipairs(el) do
+    if i == 1 then
+      table.insert(t, 1, pandoc.RawBlock("latex",
+        "\\tagstructbegin{tag=TR}\\tagstructbegin{tag=" .. rowtype .. "}\\tagmcbegin{tag=" .. rowtype .. "}"))
+    else
+      table.insert(t, 1, pandoc.RawBlock("latex",
+        "\\tagstructbegin{tag=" .. rowtype .. "}\\tagmcbegin{tag=" .. rowtype .. "}"))
+    end
+    if i == #el then
+      table.insert(t, pandoc.RawBlock("latex", "\\tagmcend\\tagstructend\\tagstructend"))
+    else
+      table.insert(t, pandoc.RawBlock("latex", "\\tagmcend\\tagstructend"))
+    end
+  end
+  return el
+end
+
 if FORMAT:match "latex" then
   function Header(el)
     return tagBlock("H" .. el.level, el)
