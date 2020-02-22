@@ -2,7 +2,7 @@
 Experiments with creating accessible PDFs from Pandoc, see
 [Pandoc #5409](https://github.com/jgm/pandoc/issues/5409).
 
-* Running `make pdf` in a dpcument subdirectory, e.g. `tagged-pres`
+* Running `make pdf` in a document subdirectory, e.g. `tagged-pres`
   should produce a tagged PDF/A-2a file using Lualatex via Pandoc,
   from the markdown sources in the directory and the Pandoc
   templates and Lua filters in the `common` directory. The `pdfnb`
